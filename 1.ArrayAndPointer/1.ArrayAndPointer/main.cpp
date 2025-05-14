@@ -35,7 +35,6 @@ void PrefixApostfixOperatorsMain()
 //알고리즘: 값을 저장하는 변수의 주소값을 포인터에 저장한다. 
 //값을 저장하는 변수의 값과 주소값을 출력한다.
 //포인터의 참조하는 변수의 값과 포인터의 값을 출력한다.
-
 void PointerAndValueCheckMain()
 {
 	printf("PointerAndValueCheckMain\n");
@@ -47,9 +46,62 @@ void PointerAndValueCheckMain()
 	printf("DataA:%d/%x\n", nDataA, &nDataA);
 	printf("pDataA:%d/%x\n", *pDataA, pDataA);
 }
+//문제: 스왑(두수를 교환하는 함수) (매개변수)가 (일반변수/포인터/참조자)의 (함수를 호출)하여 만들어보고,
+//실제로 두변수의 값을 바꿨을때 어떤 결과가 나오고, 매개변수의 주소값을 확인하여, 내부에서 어떤일이 일어났는지 확인하는 프로그램.
+//데이터: 두수
+//알고리즘: 
+// Swap교환, 두변수를 교환하는 함수.
+// 변수는 값이 복사된다.
+// A = B // B = A //변수값은복사되므로, B의 값이 A에 복사되어 A의 값과 B의 값은 같은 값이 된다. 그래서 B에 다시 A를 넣어도 B의 값은 B가 가지고 있던 값을 복사한 A이므로 결국 B와 같은 값이 된다.
+// temp = A;
+// A = B;
+// B = temp;
+// 매개변수가 일반변수인 함수
+// 매개변수가 포인터인 함수
+// 매개변수가 참조자인 함수
+//두수를 함수를 일반변수인 함수를 호출한때, 인자로 넘겨준다.
+//함수 호출후, 값을 출력한다.
+//두수를 함수를 포인터인 함수를 호출한때, 인자로 넘겨준다.
+//함수 호출후, 값을 출력한다.
+//두수를 함수를 참조자인 함수를 호출한때, 인자로 넘겨준다.
+//함수 호출후, 값을 출력한다.
+
+void SwapVal(int a, int b)
+{
+	printf("SwapVal(%x,%x)", &a, &b);
+	a = b;
+	b = a;
+}
+
+void SwapRef(int& a, int& b)
+{
+	printf("SwapRef(%x,%x)", &a, &b);
+	a = b;
+	b = a;
+}
+
+void SwapPtr(int* a, int* b)
+{
+	printf("SwapPtr(%x,%x)",&a,&b);
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+
+void SwapTestMain()
+{
+	int nDataA = 10, nDataB = 20;
+	printf("DataA/B:[%x]%d/[%x]%d\n",&nDataA, nDataA,&nDataB, nDataB);
+	SwapPtr(&nDataA, &nDataB);
+	printf("SwapPtr: DataA/B:%d/%d\n",nDataA, nDataB);
+	SwapVal(nDataA, nDataB);
+	printf("SwapVal: DataA/B:%d/%d\n", nDataA, nDataB);
+}
 
 void main()
 {
 	//PrefixApostfixOperatorsMain();
-	PointerAndValueCheckMain();
+	//PointerAndValueCheckMain();
+	SwapTestMain();
 }
