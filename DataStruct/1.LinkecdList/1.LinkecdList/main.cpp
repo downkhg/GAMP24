@@ -73,8 +73,9 @@ SNode* CreateNode(SNode* pNode, int data)
 
 	pTemp = new SNode();
 	pTemp->nData = data;
-	//if(pNode) pNode->pNext = pTemp;
-	pTemp->pNext = pNode;
+	if(pNode != NULL) //0x04 != NULL > T
+		pNode->pNext = pTemp;
+	//pTemp->pNext = pNode;
 	return  pTemp;
 }
 
@@ -110,7 +111,7 @@ void PrintLinkedList(SNode* pStart)
 	while (pNode)
 	{
 		printf("%d", pNode->nData);
-		pNode = pNode->pNext;
+		pNode = pNode->pNext; //다음노드로 이동한다.
 
 		if (pNode != NULL)
 			printf(",");
