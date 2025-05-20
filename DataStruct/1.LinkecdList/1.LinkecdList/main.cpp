@@ -82,6 +82,19 @@ SNode* CreateNode(SNode* pNode, int data)
 SNode* FindNodeData(SNode* pStart, int data)
 {
 	SNode* pNode = pStart;
+	//if (pStart->nData != data)
+	//	pNode = pStart->pNext;
+	//if (pNode->nData != data)
+	//	pNode = pNode->pNext;
+	//while (true) //예외 케이스를 테스트한다.
+	while (pNode != NULL)
+	{
+		if (pNode->nData != data)
+			pNode = pNode->pNext;
+		else
+			break;
+	}
+	//if (pNode->nData == data)
 
 	return pNode;
 }
