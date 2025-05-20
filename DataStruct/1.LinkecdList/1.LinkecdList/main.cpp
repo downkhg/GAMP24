@@ -51,10 +51,12 @@ void main()
 	PrintLinkedList(pBegin);
 
 	SNode* pFind = FindNodeData(pBegin, 40);
-	if (pFind != NULL)
+	if (pFind != NULL)//0x04 == N -> !F -> T
 		printf("Find:%d\n", pFind->nData);
 
-	pEnd = InsertNodeData(pBegin, 30, 60);//³ëµå »ðÀÔ
+	SNode* pInsert = InsertNodeData(pBegin, 30, 60);//³ëµå »ðÀÔ
+	if (pInsert != NULL)//0x06 == N -> !F -> T
+		printf("Insert:%d\n", pInsert->nData);
 
 	PrintLinkedList(pBegin);
 
@@ -105,6 +107,11 @@ SNode* InsertNodeData(SNode* pStart, int data, int insert)
 	SNode* pInsert = NULL;
 
 	pNode = FindNodeData(pStart, data);
+
+	pInsert = new SNode();
+	pInsert->nData = insert;
+	pInsert->pNext = pNode->pNext;
+	pNode->pNext = pInsert;
 
 	return pNode;
 }
