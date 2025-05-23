@@ -33,8 +33,8 @@ void InputAdd();
 //main()함수 내 코드는 추가는 가능하지만 삭제는 하지말것!
 void main()
 {
-	//_CrtSetBreakAlloc(71); //메모리 누수시 번호를 넣으면 할당하는 위치에 브레이크 포인트를 건다.
-	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //메모리 누수 검사 
+	_CrtSetBreakAlloc(84); //메모리 누수시 번호를 넣으면 할당하는 위치에 브레이크 포인트를 건다.
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); //메모리 누수 검사 
 
 	SNode* pBegin = NULL;
 	SNode* pEnd = NULL;
@@ -121,7 +121,35 @@ void DeleteNodeData(SNode* pStart, int del)
 	SNode* pPre = NULL;
 	SNode* pNode = pStart;
 
-
+	//if (pNode->nData != del) //10
+	//	pNode = pStart->pNext;
+	//if (pNode->nData != del) //20
+	//{
+	//	pNode = pNode->pNext;
+	//	pPre = pStart->pNext;
+	//}
+	while (pNode != NULL)
+	{
+		if (pNode->nData != del)//30 ~!= 60
+		{
+			pPre = pNode;
+			pNode = pNode->pNext;
+		}
+		else //if (pNode->nData == del)//60 == 60
+		{
+			pPre->pNext = pNode->pNext;
+			delete pNode;
+			break;
+		}
+	}
+	//만약 반복할것이 확실하다면 이전에 코드를 재활용하고 일부 문제가되는부분에서 수정할 필요가 있다.
+	/*while (pNode != NULL)
+	{
+		if (pNode->nData != del)
+			pNode = pNode->pNext;
+		else
+			break;
+	}*/
 }
 
 void PrintLinkedList(SNode* pStart)
@@ -143,6 +171,13 @@ void DeleteLinkedList(SNode* pStart)
 {
 	SNode* pNode = pStart;
 	SNode* pDel = NULL;
+
+	while (pNode != NULL)
+	{
+		//pDel = pNode;
+		pNode = pNode->pNext;
+		delete pDel;
+	}
 }
 
 void InputAdd()
