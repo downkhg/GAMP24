@@ -22,8 +22,8 @@ SNode* InsertNodeData(SNode* pStart, int data, int insert); //해당 데이터를 가진
 void DeleteNodeData(SNode* pStart, int del); //해당데이터를 가진 노드를 삭제한다.
 void PrintLinkedList(SNode* pStart); //노드를 순회하며 끝날때까지 출력한다.
 void DeleteLinkedList(SNode* pStart); //노드를 순회하며 모든데이터를 삭제한다.
-void ReverseLinkedList(SNode* pStart); //
-
+SNode* ReverseLinkedList(SNode* &pStart); //
+//SNode* ReverseLinkedList(SNode** pStart); //
 //연결리스트 동적으로 입력받기.(동적할당 설명용)
 void InputAdd();
 
@@ -61,6 +61,10 @@ void main()
 	PrintLinkedList(pBegin);
 
 	DeleteNodeData(pBegin, 60);//노드 삭제
+
+	PrintLinkedList(pBegin);
+
+	DeleteNodeData(pBegin, 10);//노드 삭제
 
 	PrintLinkedList(pBegin);
 
@@ -116,7 +120,7 @@ SNode* InsertNodeData(SNode* pStart, int data, int insert)
 	return pNode;
 }
 
-void DeleteNodeData(SNode* pStart, int del)
+SNode* DeleteNodeData(SNode* &pStart, int del)
 {
 	SNode* pPre = NULL;
 	SNode* pNode = pStart;
@@ -130,14 +134,61 @@ void DeleteNodeData(SNode* pStart, int del)
 	//}
 	while (pNode != NULL)
 	{
-		if (pNode->nData != del)//30 ~!= 60
+		if (pNode->nData != del)//0x01->nData:10 != 10 // 10 == 10 -> T // !T //F
 		{
 			pPre = pNode;
 			pNode = pNode->pNext;
 		}
 		else //if (pNode->nData == del)//60 == 60
 		{
-			pPre->pNext = pNode->pNext;
+			if (*pStart == pNode)
+				*pStart = pNode->pNext;
+
+			if (pPre != NULL)//N == N -> T -> !T ->F
+				pPre->pNext = pNode->pNext;
+
+			delete pNode;
+			break;
+		}
+	}
+	//만약 반복할것이 확실하다면 이전에 코드를 재활용하고 일부 문제가되는부분에서 수정할 필요가 있다.
+	/*while (pNode != NULL)
+	{
+		if (pNode->nData != del)
+			pNode = pNode->pNext;
+		else
+			break;
+	}*/
+}
+
+
+SNode* DeleteNodeDataPtr(SNode** pStart, int del)
+{
+	SNode* pPre = NULL;
+	SNode* pNode = *pStart;
+
+	//if (pNode->nData != del) //10
+	//	pNode = pStart->pNext;
+	//if (pNode->nData != del) //20
+	//{
+	//	pNode = pNode->pNext;
+	//	pPre = pStart->pNext;
+	//}
+	while (pNode != NULL)
+	{
+		if (pNode->nData != del)//0x01->nData:10 != 10 // 10 == 10 -> T // !T //F
+		{
+			pPre = pNode;
+			pNode = pNode->pNext;
+		}
+		else //if (pNode->nData == del)//60 == 60
+		{
+			if (*pStart == pNode)
+				*pStart = pNode->pNext;
+
+			if (pPre != NULL)//N == N -> T -> !T ->F
+				pPre->pNext = pNode->pNext;
+			
 			delete pNode;
 			break;
 		}
