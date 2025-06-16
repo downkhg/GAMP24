@@ -188,10 +188,11 @@ SNode* DeleteNodeDataPtr(SNode** pStart, int del)
 
 			if (pPre != NULL)//N == N -> T -> !T ->F
 				pPre->pNext = pNode->pNext;
-			
+
 			delete pNode;
 			break;
 		}
+	}
 	}
 	//만약 반복할것이 확실하다면 이전에 코드를 재활용하고 일부 문제가되는부분에서 수정할 필요가 있다.
 	/*while (pNode != NULL)
