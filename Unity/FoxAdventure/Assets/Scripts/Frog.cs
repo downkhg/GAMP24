@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Frog : MonoBehaviour
 {
@@ -13,10 +14,23 @@ public class Frog : MonoBehaviour
     public bool isJumpping = false;
 
     public float maxTime = 1; //최대시간
+    public bool isTimmer;
+
+    //public UnityEvent TimmerAction;
+
+    public void StartJump() { isJump = true; isMove = true; }
+    public void EndJump() { isJump = false; isMove = false; }
+
     IEnumerator ProccssTimmer()
     {
+        isTimmer = true;
         yield return new WaitForSeconds(maxTime);
-        isJump = true;
+        //TimmerAction.Invoke();
+        Jump();
+        StartJump();
+        //yield return new WaitForSeconds(maxTime);
+        //isMove = true ;
+        isTimmer = false;
     }
 
     void SetTimmer()
@@ -38,33 +52,26 @@ public class Frog : MonoBehaviour
 
     public void Jump()
     {
-        if (isJump && isJumpping == false)
-        {
-            GetComponent<Rigidbody2D>().AddForce(Vector3.up * JumpPower);
-            isJumpping = true;
-            isMove = true;
-        }
+        GetComponent<Rigidbody2D>().AddForce(Vector3.up * JumpPower);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //UpdateTimmer();
-
-        if(isJumpping == false && isJump == false)
+        if (isJump == false)
         {
-            SetTimmer();
+            if (isTimmer == false)
+            {
+                SetTimmer();
+            }
         }
 
-        Jump();
         Move();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isJumpping = false;
-        isJump = false;
-        isMove = false;
+        EndJump();
         Debug.Log($"OnCollisionEnter2D:{collision.gameObject.name}");
     }
 
