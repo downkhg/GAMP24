@@ -29,6 +29,11 @@ public class Responner : MonoBehaviour
             {
                 //플레이어의 프리팹을 복제한다. 리스포너의 위치에, 회전값은 없음.
                 objPlayer = Instantiate(prefabPlayer, transform.position, Quaternion.identity);
+                
+                ////독수리만 사용하는 객체가 아니므로 비효율적이다.
+                //Eagle eagle = objPlayer.GetComponent<Eagle>();
+                //if(eagle) eagle.trResponPoint = this.transform;
+
                 //현재시간에 -1을 셋팅한다 //타이머를 비활성화한다.
                 curTime = -1;
             }

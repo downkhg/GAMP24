@@ -6,6 +6,8 @@ public class Eagle : MonoBehaviour
 {
     public GameObject objTarget;
     public float Speed = 2;
+
+    public Transform trResponPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,8 @@ public class Eagle : MonoBehaviour
             if (fDist >= Time.deltaTime)
                 transform.position += vDir * Speed * Time.deltaTime;
         }
+        else
+            objTarget = trResponPoint.gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
