@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Responner responnerPlayer;
     public Responner responnerEagle;
+    public CameraTracker tracker;
+
+
+    public void UpdateCameraTracker()
+    {
+        if (tracker != null && tracker.objTarget == null)
+        {
+            tracker.objTarget = responnerPlayer.objPlayer;
+        }
+    }
 
     public void UpdateEagle()
     {
@@ -28,5 +39,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateEagle();
+        UpdateCameraTracker();
     }
 }
