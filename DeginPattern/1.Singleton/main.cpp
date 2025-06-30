@@ -36,7 +36,7 @@ int main()
 	//CSingleObject cSigleObject[2];
 	CSingleObject* pSingleObject = NULL;
 	pSingleObject = CSingleObject::GetInstance(); //객체가 생성되기전에 접근가능한것은 객체의 이름이므로 이렇게 접근을 해야한다.
-	//pSingleObject =	pSingleObject->GetInstance(); //객체가 생성되지않은 객체에 접근하는것은 불가능하므로 컴파일에러가 발생한다.
+	//pSingleObject = pSingleObject->GetInstance(); //객체가 생성되지않은 객체에 접근하는것은 불가능하므로 컴파일에러가 발생한다.
 	pSingleObject->ShowMessage();
 	//delete pSingleObject; //단일책임원칙에 따라 객체내의 할당된 메모리는 각 객체 내부에서 삭제하는 것이 원칙이다.
 	pSingleObject->Release();
