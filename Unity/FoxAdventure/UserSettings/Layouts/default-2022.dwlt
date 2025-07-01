@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 90
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 150}
   m_MaxSize: {x: 16192, y: 24288}
   vertical: 1
-  controlID: 51
+  controlID: 99
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 0
-  controlID: 52
+  controlID: 89
   draggingID: 0
 --- !u!114 &13
 MonoBehaviour:
@@ -516,7 +516,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Editor
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -524,15 +524,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Editor
+  - Assets/Scripts
   m_LastFoldersGridSize: 56
   m_LastProjectPath: D:\Users\source\repos\GAMP24\Unity\FoxAdventure
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 85}
-    m_SelectedIDs: 4a750000
-    m_LastClickedID: 30026
+    m_SelectedIDs: 52750000
+    m_LastClickedID: 30034
     m_ExpandedIDs: 0000000068720000ae730000b0730000b2730000b4730000b6730000b873000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300001e7200004a7500009c770000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 245a0000
       m_LastClickedID: 0
       m_ExpandedIDs: 16fbffff
       m_RenameOverlay:

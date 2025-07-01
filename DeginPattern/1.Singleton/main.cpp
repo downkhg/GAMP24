@@ -27,6 +27,7 @@ public:
 		delete m_pInstance;
 	}
 };
+
 //C++의 문법상 클래스의 객체가 생성되기전에 할당가능한 메모리가 전역변수이므로, 맴버변수를 전역변수처렴 선언해야한다.
 CSingleObject* CSingleObject::m_pInstance = NULL;
 
