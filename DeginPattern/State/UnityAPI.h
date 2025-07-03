@@ -1,6 +1,9 @@
 #pragma once
 
-//#include <iostream>
+#include <iostream>
+#include <unordered_set>
+
+class CGameObejct;
 
 class CUnityEditor; //클래스의 선언: 클래스의 실체가 존재하지않지만 나중이 정의할것을 미리 알리는것.
 class CTitleScene;
@@ -9,6 +12,7 @@ class CEndScene;
 
 class CUnityScene
 {
+	std::unordered_set<CGameObejct*> m_gameObjects;
 public:
 	CUnityScene();
 	~CUnityScene();

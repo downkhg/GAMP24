@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabBullet: {fileID: 6355441000059955203, guid: dc43451c87832d94da09be44c80f5fda, type: 3}
-  ShotPower: 300
+  shotPower: 999
   trMozzle: {fileID: 6295475510942933552}
 --- !u!1 &7514854867214019310
 GameObject:

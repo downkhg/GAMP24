@@ -9,6 +9,8 @@ public class Dynamic : MonoBehaviour
     public float Speed;
     public int Score;
 
+    public Gun gun;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,11 @@ public class Dynamic : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().AddForce(Vector3.up * JumpPower);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            gun.Shot(GetComponent<Player>());
         }
     }
 

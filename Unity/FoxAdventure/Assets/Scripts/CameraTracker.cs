@@ -20,6 +20,7 @@ public class CameraTracker : MonoBehaviour
         {
             Vector3 vPos = this.transform.position;
             Vector3 vTargetPos = objTarget.transform.position;
+            vTargetPos.z = vPos.z;
             Vector3 vDist = vTargetPos - vPos;
             Vector3 vDir = vDist.normalized;
             float fDist = vDist.magnitude;

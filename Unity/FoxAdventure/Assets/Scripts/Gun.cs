@@ -5,27 +5,16 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject prefabBullet;
-    public float ShotPower;
+    public float shotPower;
     public Transform trMozzle;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Shot(Player player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            GameObject objBullet = Instantiate(prefabBullet,trMozzle.position,Quaternion.identity);
-            Rigidbody2D rigidbody = objBullet.GetComponent<Rigidbody2D>();
-            if (rigidbody != null)
-            {
-                rigidbody.AddForce(Vector3.right * ShotPower);
-                Destroy(objBullet,1);
-            }
-        }
+        //objBullet.GetComponent<Rigidbody2D>().AddForce(Vector3.right * shotPower);
+        GameObject objBullet = Instantiate(prefabBullet, trMozzle.position, Quaternion.identity);
+        objBullet.GetComponent<Rigidbody2D>().AddForce(Vector3.right * shotPower);
+        Bullet bullet = objBullet.GetComponent<Bullet>();
+        bullet.playerMaster = player;
+        Destroy(objBullet, 1);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Player playerMaster;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,40 @@ public class Bullet : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Attack()
     {
-        if(collision.transform.tag == "Monster")
-        Destroy(collision.gameObject);
+        CircleCollider2D circleCollider = GetComponent<CircleCollider2D>();
+        Collider2D collision = Physics2D.OverlapCircle(this.transform.position, circleCollider.radius, 1 << LayerMask.NameToLayer("Monster"));
+
+        if (collision)
+        {
+            Player target = collision.gameObject.GetComponent<Player>();
+
+            if (target && playerMaster)
+            {
+                SuperMode superMode = collision.gameObject.GetComponent<SuperMode>();
+                if (superMode != null)
+                {
+                    if (superMode.isUse == false)
+                    {
+                        playerMaster.Attack(target);
+                        superMode.Use();
+                        Debug.Log("Attack!");
+                        if (target.Death())
+                        {
+                            playerMaster.StillExp(target);
+                            playerMaster.LvUp();
+                            Destroy(collision.gameObject);
+                        }
+                        Destroy(gameObject);
+                    }
+                }
+            };
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Attack();
     }
 }

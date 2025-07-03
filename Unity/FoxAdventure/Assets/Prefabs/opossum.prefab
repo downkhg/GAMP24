@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2240447002443956627}
   - component: {fileID: 6455439746455890911}
   - component: {fileID: 2166350437235488822}
-  m_Layer: 0
+  - component: {fileID: 1810239427220393371}
+  m_Layer: 6
   m_Name: opossum
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -173,3 +174,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1810239427220393371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764503619792945894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f3ee8a20902a2428f04685dd75efb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  isUse: 1
+  spriteRenderer: {fileID: 0}

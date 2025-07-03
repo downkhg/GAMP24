@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Responner responnerPlayer;
     public Responner responnerEagle;
+    public Responner responnerOpossum;
     public CameraTracker tracker;
 
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
             if (eagle != null)
             {
                 eagle.trResponPoint = responnerEagle.transform;
+                eagle.trPatrolPoint = responnerOpossum.transform;
             }
         }
     }
